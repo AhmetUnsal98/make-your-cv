@@ -3,11 +3,12 @@
     flex-direction: column;
     width: 100vw;
     height: auto;
-    background-color: gray;
+    background-color: #5d3891;
     p,
     h3,
     span {
         color: white;
+        cursor: pointer;
     }
     .upper-footer {
         display: flex;
@@ -19,7 +20,7 @@
         align-items: center;
         justify-content: center;
         height: 2rem;
-        background-color: gray;
+        background-color: #5d3891;
         border-top: 2px solid white;
         text-align: center;
     }
