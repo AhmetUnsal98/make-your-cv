@@ -4,7 +4,10 @@ import "./dashboard.scss";
 import img from "../../assets/dash.png";
 import Card from "./components/Card/Card";
 import Banner from "./components/Banner/Banner";
+import { Link, useNavigate } from "react-router-dom";
 export const Dashboard = () => {
+  const navigate = useNavigate();
+
   return (
     <MainLayout>
       <div className="dashboard">
@@ -12,7 +15,13 @@ export const Dashboard = () => {
           <div className="info-container">
             <h1>Hurry Up! Create your cv free now...</h1>
             <div className="buttons">
-              <button>Start to create now</button>
+              <button
+                onClick={() => navigate("/build")}
+                className="button-link"
+              >
+                Start to create now
+              </button>
+
               <button>Subscribe</button>
             </div>
           </div>
@@ -20,7 +29,6 @@ export const Dashboard = () => {
             <img src={img}></img>
           </div>
         </div>
-
         <div className="second-section">
           <Card />
           <Card />

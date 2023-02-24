@@ -1,6 +1,6 @@
 .header {
     width: 100%;
-    height: 4rem;
+    height: 5rem;
     display: flex;
     flex-direction: row;
     align-items: center;
@@ -28,10 +28,10 @@
     position: fixed;
     background-color: #5d3891;
     transform: perspective();
-    animation: 0.3s changeCard linear;
+    animation: 0.3s change linear;
     transition: transform ease-in-out;
 
-    @keyframes changeCard {
+    @keyframes change {
         0%,
         70% {
             opacity: 0;

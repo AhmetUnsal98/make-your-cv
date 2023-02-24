@@ -1,0 +1,34 @@
+@import "../../../styles/mixins.scss";
+.education {
+    width: 100%;
+    height: auto;
+    min-height: 320px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 1rem;
+}
+.education-upper {
+    display: flex;
+    flex-direction: row;
+    width: 70%;
+}
+.education-column {
+    display: flex;
+    flex-direction: column;
+    margin: 1rem;
+    width: 100%;
+}
+input {
+    @include inputForm;
+}
+span {
+    @include spanForm;
+}
+.education-bottom {
+    display: flex;
+    flex-direction: row;
+    input {
+        margin: 0.1rem;
+    }
+}
