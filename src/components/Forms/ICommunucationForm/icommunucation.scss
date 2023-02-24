@@ -1,0 +1,41 @@
+@import "../../../styles/mixins.scss";
+.communucation {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    height: auto;
+    min-height: 320px;
+    align-items: center;
+    input {
+        @include inputForm;
+    }
+    span {
+        @include spanForm;
+    }
+}
+.comm-wrapper {
+    display: flex;
+    flex-direction: row;
+    width: 75%;
+    margin-top: 1rem;
+}
+.comm-column {
+    width: 100%;
+    margin: 1rem;
+}
+.comm-column-button {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    button {
+        width: 6rem;
+        height: 3rem;
+        margin-left: 1rem;
+        margin-top: 1.5rem;
+        border: 0px;
+        background-color: $base-color-purple;
+        color: white;
+        font-size: 1.2rem;
+        border-radius: 6px;
+    }
+}

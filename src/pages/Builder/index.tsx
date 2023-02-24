@@ -46,13 +46,13 @@ const BuildPage = () => {
               onClick={() => setPage(3)}
               className={page === 3 ? "tag active" : "tag"}
             >
-              Your Skills
+              Skills & Languages
             </span>
             <span
               onClick={() => setPage(4)}
               className={page === 4 ? "tag active" : "tag"}
             >
-              Communcation
+              Communcation & Socail Media
             </span>
           </div>
           <div style={{ height: "auto", width: "100%" }}>{PageDisplay()}</div>

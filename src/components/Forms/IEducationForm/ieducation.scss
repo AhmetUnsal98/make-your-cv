@@ -7,6 +7,12 @@
     flex-direction: column;
     align-items: center;
     margin-top: 1rem;
+    input {
+        @include inputForm;
+    }
+    span {
+        @include spanForm;
+    }
 }
 .education-upper {
     display: flex;
@@ -19,12 +25,7 @@
     margin: 1rem;
     width: 100%;
 }
-input {
-    @include inputForm;
-}
-span {
-    @include spanForm;
-}
+
 .education-bottom {
     display: flex;
     flex-direction: row;

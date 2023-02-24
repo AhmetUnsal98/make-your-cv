@@ -1,0 +1,34 @@
+@import "../../../styles/variables.scss";
+@import "../../../styles/mixins.scss";
+.skill {
+    width: 100%;
+    height: auto;
+    min-height: 320px;
+    display: flex;
+    flex-direction: row;
+    margin-top: 1rem;
+    justify-content: center;
+}
+.skill-half {
+    width: 45%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin: 2rem;
+    input {
+        @include inputForm;
+        margin: 0.2rem;
+    }
+    span {
+        @include spanForm;
+    }
+}
+.skill-row {
+    display: flex;
+    flex-direction: row;
+    .trash {
+        color: $base-color-purple;
+        cursor: pointer;
+        text-align: center;
+    }
+}
