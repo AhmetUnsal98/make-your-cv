@@ -1,6 +1,6 @@
 import React from "react";
 import "./iskill.scss";
-import { IoTrashBinOutline } from "react-icons/io5";
+import { IoAddCircleOutline } from "react-icons/io5";
 const ISkillForm = () => {
   return (
     <div className="skill">
@@ -10,7 +10,7 @@ const ISkillForm = () => {
           {" "}
           <input placeholder="Skill Name"></input>
           <input placeholder="Level"></input>
-          <IoTrashBinOutline className="trash" size={70} />
+          <IoAddCircleOutline className="trash" size={70} />
         </div>
       </div>
       <div className="skill-half">
@@ -18,7 +18,7 @@ const ISkillForm = () => {
         <div className="skill-row">
           <input placeholder="Langugage"></input>
           <input placeholder="Level"></input>
-          <IoTrashBinOutline className="trash" size={70} />
+          <IoAddCircleOutline className="trash" size={70} />
         </div>
       </div>
     </div>

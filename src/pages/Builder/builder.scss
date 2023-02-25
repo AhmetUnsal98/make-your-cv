@@ -44,6 +44,17 @@
         border-radius: 4px;
         font-weight: 550;
         cursor: pointer;
+        &:active {
+            animation: ripple 1s ease-in;
+        }
+    }
+    @keyframes ripple {
+        0% {
+            box-shadow: 1px 1px 1px 1px gray;
+        }
+        100% {
+            box-shadow: 12px 12px 12px 12px gray;
+        }
     }
     .prev-button {
         width: 8rem;

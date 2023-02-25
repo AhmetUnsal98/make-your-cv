@@ -64,17 +64,21 @@ const BuildPage = () => {
               }}
               className="prev-button"
             >
-              PREV
+              Previous
             </button>
-            <button
-              disabled={page === 4}
-              onClick={() => {
-                setPage((prev) => prev + 1);
-              }}
-              className="next-button"
-            >
-              NEXT
-            </button>
+            {page !== 4 ? (
+              <button
+                disabled={page === 4}
+                onClick={() => {
+                  setPage((prev) => prev + 1);
+                }}
+                className="next-button"
+              >
+                Next
+              </button>
+            ) : (
+              <button className="next-button">Finish</button>
+            )}
           </div>
         </div>
       </div>
