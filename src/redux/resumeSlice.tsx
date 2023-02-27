@@ -1,57 +1,17 @@
 import { createSlice } from "@reduxjs/toolkit";
-interface SkillModel {
-  id: string;
-  skillName: string;
-  skillLevel: string;
-}
-interface SkillArray {
-  skills: SkillModel[];
-}
-
+import { SkillArray } from "../lib/SkillModel";
+import { ExperienceArray } from "../lib/ExperienceModel";
+import { LanguageArray } from "../lib/LanguageModel";
+import { Resumes } from "../lib/ResumeModel";
 const initialSkillsState: SkillArray = {
   skills: [],
 };
-interface LanguageModel {
-  id: string;
-  languageName: string;
-  languageLevel: string;
-}
-interface LanguageArray {
-  languages: LanguageModel[];
-}
 const initialLanguagesState: LanguageArray = {
   languages: [],
 };
-interface ExperienceModel {
-  id: string;
-  companyName: string;
-  jobTitle: string;
-  expStartingDate: string;
-  expFinishingDate: string;
-  desc: string;
-}
-interface ExperienceArray {
-  experiences: ExperienceModel[];
-}
 const initialExperiencesState: ExperienceArray = {
   experiences: [],
 };
-
-interface Resumes {
-  id: string;
-  fullName: string;
-  birthDate: string;
-  title: string;
-  schoolName: string;
-  degree: string;
-  eduStartingDate: string;
-  eduFinishingDate: string;
-  skills: SkillArray;
-  languages: LanguageArray;
-  email: string;
-  phone: string;
-  experiences: ExperienceArray;
-}
 const initialResumeState: Resumes[] = [];
 const initialStateRedux = {
   initialSkillsState,
@@ -66,7 +26,6 @@ const resumeSlice = createSlice({
     initialLanguagesState,
     initialExperiencesState,
   },
-
   reducers: {
     addToDataToResume: (state, action) => {
       state.initialResumeState.push(action.payload);
@@ -83,5 +42,6 @@ const resumeSlice = createSlice({
     },
   },
 });
-export const { addToDataToResume, addToSkills } = resumeSlice.actions;
+export const { addToDataToResume, addToSkills, removeFromSkills } =
+  resumeSlice.actions;
 export default resumeSlice.reducer;

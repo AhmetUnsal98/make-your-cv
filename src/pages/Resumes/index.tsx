@@ -2,21 +2,7 @@ import React, { useEffect, useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { useLocation } from "react-router-dom";
 import { uid } from "uid";
-interface ResumeModel {
-  id: string;
-  fullName: string;
-  birthDate: string;
-  title: string;
-  schoolName: string;
-  degree: string;
-  eduStartDate: string;
-  eduFinishDate: string;
-  skills: [];
-  languages: [];
-  email: string;
-  phone: string;
-  experiences: [];
-}
+import { ResumeModel } from "../../lib/ResumeModel";
 
 export const Resumes = () => {
   const resume = useSelector((state: any) => state.resume.initialResumeState);
@@ -59,6 +45,9 @@ export const Resumes = () => {
       {currentResume.title}
       {currentResume.email}
       {currentResume.phone}
+      {currentResume.skills.map((item: any) => (
+        <p>{item.skillName}</p>
+      ))}
     </div>
   );
 };

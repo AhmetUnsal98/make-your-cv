@@ -3,7 +3,7 @@ import "./iskill.scss";
 import { IoAddCircleOutline, IoTrashBinOutline } from "react-icons/io5";
 import { uid } from "uid";
 import { useSelector, useDispatch } from "react-redux";
-import { addToSkills } from "../../../redux/resumeSlice";
+import { addToSkills, removeFromSkills } from "../../../redux/resumeSlice";
 const ISkillForm = ({ resumeData, setResumeData }: any) => {
   const [skillName, setSkillName] = useState("");
   const [skillLevel, setSkillLevel] = useState("");
@@ -48,7 +48,6 @@ const ISkillForm = ({ resumeData, setResumeData }: any) => {
               setSkillName("");
               setSkillLevel("");
               dispatch(addToSkills({ id: uid(), skillName, skillLevel }));
-              setResumeData({ ...resumeData, skills: skills });
             }}
           >
             <IoAddCircleOutline className="trash" size={40} />
@@ -68,7 +67,7 @@ const ISkillForm = ({ resumeData, setResumeData }: any) => {
                 color="gray"
                 size={30}
                 onClick={() => {
-                  setResumeData({ ...resumeData, skills: skills });
+                  dispatch(removeFromSkills(item.id));
                 }}
               />
             </div>

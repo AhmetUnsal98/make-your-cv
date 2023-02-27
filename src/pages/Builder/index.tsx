@@ -10,22 +10,7 @@ import { useSelector, useDispatch } from "react-redux";
 import { addToDataToResume } from "../../redux/resumeSlice";
 import { useNavigate } from "react-router-dom";
 import { uid } from "uid";
-
-interface ResumeModel {
-  id: string;
-  fullName: string;
-  birthDate: string;
-  title: string;
-  schoolName: string;
-  degree: string;
-  eduStartDate: string;
-  eduFinishDate: string;
-  skills: [];
-  languages: [];
-  email: string;
-  phone: string;
-  experiences: [];
-}
+import { ResumeModel } from "../../lib/ResumeModel";
 
 const BuildPage = () => {
   const navigate = useNavigate();
