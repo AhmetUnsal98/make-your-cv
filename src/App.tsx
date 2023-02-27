@@ -8,6 +8,7 @@ import {
 } from "react-router-dom";
 import BuildPage from "./pages/Builder";
 import ClipLoader from "react-spinners/ClipLoader";
+import { Resumes } from "./pages/Resumes";
 function App() {
   const override: CSSProperties = {
     display: "block",
@@ -32,6 +33,7 @@ function App() {
       ) : (
         <BrowserRouter>
           <Routes>
+            <Route path="/resume/:id" element={<Resumes />}></Route>
             <Route path="/" element={<Dashboard />} />
             <Route path="/build" element={<BuildPage />} />
           </Routes>

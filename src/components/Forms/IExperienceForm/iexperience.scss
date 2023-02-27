@@ -1,0 +1,68 @@
+@import "../../../styles/mixins.scss";
+.education {
+    width: 100%;
+    height: auto;
+    min-height: 420px;
+    display: flex;
+    flex-direction: column;
+
+    margin-top: 1rem;
+    input {
+        @include inputForm;
+    }
+    span {
+        @include spanForm;
+    }
+}
+.education-upper {
+    display: flex;
+    flex-direction: row;
+    width: 70%;
+}
+.education-column {
+    display: flex;
+    flex-direction: column;
+    margin: 1rem;
+    width: 100%;
+}
+
+.education-bottom {
+    display: flex;
+    flex-direction: row;
+    input {
+        margin: 0.1rem;
+    }
+}
+.description {
+    display: flex;
+    flex-direction: column;
+    width: 70%;
+    margin-left: 1.5rem;
+    .desc {
+        width: 100%;
+    }
+    button {
+        width: 102px;
+        height: 42px;
+        border: 2px solid $base-color-purple;
+        margin-top: 0.5rem;
+        border-radius: 6px;
+        cursor: pointer;
+    }
+}
+.exp-set {
+    width: 40%;
+    height: 3rem;
+    border-radius: 8px;
+    border: 2px solid $base-color-purple;
+    margin-top: 1rem;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-around;
+    p {
+        font-size: 1.2rem;
+        font-weight: 500;
+        color: gray;
+    }
+}

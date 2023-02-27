@@ -1,7 +1,8 @@
-import React from 'react'
+import { configureStore } from "@reduxjs/toolkit";
+import resumeSlice from "./resumeSlice";
 
-export const store = () => {
-  return (
-    <div>store</div>
-  )
-}
+export const store = configureStore({
+  reducer: {
+    resume: resumeSlice,
+  },
+});

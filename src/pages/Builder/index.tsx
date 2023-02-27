@@ -1,31 +1,97 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import "./builder.scss";
 import { BuilderLayout } from "../../layouts/BuilderLayout";
 import IPersonal from "../../components/Forms/IPersonalForm";
 import ICommuncationForm from "../../components/Forms/ICommunucationForm";
 import IEducationForm from "../../components/Forms/IEducationForm";
 import ISkillForm from "../../components/Forms/ISkillForm";
+import IExperienceForm from "../../components/Forms/IExperienceForm";
+import { useSelector, useDispatch } from "react-redux";
+import { addToDataToResume } from "../../redux/resumeSlice";
+import { useNavigate } from "react-router-dom";
+import { uid } from "uid";
+
+interface ResumeModel {
+  id: string;
+  fullName: string;
+  birthDate: string;
+  title: string;
+  schoolName: string;
+  degree: string;
+  eduStartDate: string;
+  eduFinishDate: string;
+  skills: [];
+  languages: [];
+  email: string;
+  phone: string;
+  experiences: [];
+}
+
 const BuildPage = () => {
+  const navigate = useNavigate();
+  const dispatch = useDispatch();
+  const skills = useSelector(
+    (state: any) => state.resume.initialSkillsState.skills
+  );
+  const languages = useSelector(
+    (state: any) => state.resume.initialLanguagesState.languages
+  );
+
   const [page, setPage] = useState(1);
-  const [progress, setProgress] = useState(25);
+  const [resumeData, setResumeData] = useState<ResumeModel>({
+    id: uid(),
+    fullName: "",
+    birthDate: "",
+    title: "",
+    schoolName: "",
+    degree: "",
+    eduStartDate: "",
+    eduFinishDate: "",
+    skills: skills,
+    languages: languages,
+    email: "",
+    phone: "",
+    experiences: [],
+  });
 
   const PageDisplay = () => {
     if (page === 1) {
-      return <IPersonal />;
+      return (
+        <IPersonal resumeData={resumeData} setResumeData={setResumeData} />
+      );
     } else if (page === 2) {
-      return <IEducationForm />;
+      return (
+        <IEducationForm resumeData={resumeData} setResumeData={setResumeData} />
+      );
     } else if (page === 3) {
-      return <ISkillForm />;
+      return (
+        <ISkillForm resumeData={resumeData} setResumeData={setResumeData} />
+      );
     } else if (page === 4) {
-      return <ICommuncationForm />;
+      return (
+        <ICommuncationForm
+          resumeData={resumeData}
+          setResumeData={setResumeData}
+        />
+      );
+    } else if (page === 5) {
+      return (
+        <IExperienceForm
+          resumeData={resumeData}
+          setResumeData={setResumeData}
+        />
+      );
     }
   };
+  useEffect(() => {
+    setResumeData({ ...resumeData, skills: skills });
+  }, [skills]);
 
   return (
     <BuilderLayout>
       <div className="builder">
         <div className="progress-bar">
-          <div style={{ width: `${page * 25}%` }} className="progressing"></div>
+          <div style={{ width: `${page * 20}%` }} className="progressing"></div>
         </div>
         <h1>Please Tell About Yourself</h1>
         <div className="build-form">
@@ -54,6 +120,12 @@ const BuildPage = () => {
             >
               Communcation & Socail Media
             </span>
+            <span
+              onClick={() => setPage(5)}
+              className={page === 5 ? "tag active" : "tag"}
+            >
+              Experience
+            </span>
           </div>
           <div style={{ height: "auto", width: "100%" }}>{PageDisplay()}</div>
           <div className="build-forms-buttons">
@@ -66,9 +138,9 @@ const BuildPage = () => {
             >
               Previous
             </button>
-            {page !== 4 ? (
+            {page !== 5 ? (
               <button
-                disabled={page === 4}
+                disabled={page === 5}
                 onClick={() => {
                   setPage((prev) => prev + 1);
                 }}
@@ -77,7 +149,15 @@ const BuildPage = () => {
                 Next
               </button>
             ) : (
-              <button className="next-button">Finish</button>
+              <button
+                onClick={() => {
+                  dispatch(addToDataToResume(resumeData));
+                  navigate("/resume/" + resumeData.id);
+                }}
+                className="next-button"
+              >
+                Finish
+              </button>
             )}
           </div>
         </div>

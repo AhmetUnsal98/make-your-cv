@@ -39,3 +39,14 @@
         border-radius: 6px;
     }
 }
+.social-media-set {
+    display: flex;
+    flex-direction: row;
+    width: 75%;
+    height: 2rem;
+    border: 2px solid $base-color-purple;
+    align-items: center;
+    padding: 1rem;
+    border-radius: 0.5rem;
+    justify-content: space-around;
+}
