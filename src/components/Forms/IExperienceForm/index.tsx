@@ -2,13 +2,29 @@ import React, { useState } from "react";
 import "./iexperience.scss";
 import { IoTrashBinOutline } from "react-icons/io5";
 import { uid } from "uid";
+import { useSelector, useDispatch } from "react-redux";
+import {
+  addToExperiences,
+  removeFromExperiences,
+} from "../../../redux/resumeSlice";
 const IExperienceForm = ({ resumeData, setResumeData }: any) => {
   const [companyName, setCompanyName] = useState("");
   const [jobTitle, setJobTitle] = useState("");
   const [startingDate, setStartingDate] = useState("");
   const [finishingDate, setFinishingDate] = useState("");
   const [desc, setDesc] = useState("");
-  const [experiences, setExperiences] = useState([] as any);
+
+  const dispatch = useDispatch();
+  const experiences = useSelector(
+    (state: any) => state.resume.initialExperiencesState.experiences
+  );
+  function clearInputs() {
+    setCompanyName("");
+    setJobTitle("");
+    setStartingDate("");
+    setFinishingDate("");
+    setDesc("");
+  }
   return (
     <div className="education">
       <div className="education-upper">
@@ -83,29 +99,28 @@ const IExperienceForm = ({ resumeData, setResumeData }: any) => {
         ></input>
         <button
           onClick={() => {
-            setExperiences([
-              ...experiences,
-              { id: uid(16), companyName, startingDate, finishingDate, desc },
-            ]);
-            setCompanyName("");
-            setStartingDate("");
-            setFinishingDate("");
-            setDesc("");
-            setResumeData({ ...resumeData, experiences: experiences });
+            dispatch(
+              addToExperiences({
+                id: uid(),
+                companyName: companyName,
+                jobTitle: jobTitle,
+                expStartingDate: startingDate,
+                expFinishDate: finishingDate,
+                desc: desc,
+              })
+            );
+            clearInputs();
           }}
         >
           Ekle
         </button>
-        {experiences.map((item: any) => (
+        {experiences?.map((item: any) => (
           <div className="exp-set">
             <p>Company Name : {item.companyName}</p>
             <p> Title : {item.jobTitle}</p>
             <IoTrashBinOutline
               onClick={() => {
-                setExperiences(
-                  experiences.filter((sk: any) => sk.id !== item.id)
-                );
-                setResumeData({ ...resumeData, experiences: experiences });
+                dispatch(removeFromExperiences(item.id));
               }}
               size={30}
               color="gray"

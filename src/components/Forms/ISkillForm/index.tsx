@@ -3,7 +3,12 @@ import "./iskill.scss";
 import { IoAddCircleOutline, IoTrashBinOutline } from "react-icons/io5";
 import { uid } from "uid";
 import { useSelector, useDispatch } from "react-redux";
-import { addToSkills, removeFromSkills } from "../../../redux/resumeSlice";
+import {
+  addToLangugages,
+  addToSkills,
+  removeFromLanguages,
+  removeFromSkills,
+} from "../../../redux/resumeSlice";
 const ISkillForm = ({ resumeData, setResumeData }: any) => {
   const [skillName, setSkillName] = useState("");
   const [skillLevel, setSkillLevel] = useState("");
@@ -102,7 +107,13 @@ const ISkillForm = ({ resumeData, setResumeData }: any) => {
             onClick={() => {
               setLanguageName("");
               setLanguageLevel("");
-              setResumeData({ ...resumeData, languages: languages });
+              dispatch(
+                addToLangugages({
+                  id: uid(),
+                  languageName: languageName,
+                  languageLevel: languageLevel,
+                })
+              );
             }}
           >
             <IoAddCircleOutline className="trash" size={40} />
@@ -122,7 +133,7 @@ const ISkillForm = ({ resumeData, setResumeData }: any) => {
                 color="gray"
                 size={30}
                 onClick={() => {
-                  setResumeData({ ...resumeData, languages: languages });
+                  dispatch(removeFromLanguages(item.id));
                 }}
               />
             </div>

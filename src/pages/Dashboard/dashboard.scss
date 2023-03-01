@@ -25,6 +25,7 @@
         flex-direction: row;
 
         .button-link {
+            width: auto;
             padding: 1.2rem;
             border: 0px;
             font-size: 1.5rem;
@@ -41,6 +42,7 @@
             }
         }
         button:last-child {
+            width: auto;
             padding: 1.2rem;
             font-size: 1.5rem;
             color: #5d3891;

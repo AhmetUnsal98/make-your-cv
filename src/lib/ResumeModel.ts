@@ -1,6 +1,7 @@
 import { ExperienceArray } from "./ExperienceModel";
 import { LanguageArray } from "./LanguageModel";
 import { SkillArray } from "./SkillModel";
+import { SocialArray } from "./SocialModel";
 
 export interface ResumeModel {
   id: string;
@@ -12,6 +13,7 @@ export interface ResumeModel {
   eduStartDate: string;
   eduFinishDate: string;
   skills: [];
+  socials: [];
   languages: [];
   email: string;
   phone: string;
@@ -27,6 +29,7 @@ export interface Resumes {
   eduStartingDate: string;
   eduFinishingDate: string;
   skills: SkillArray;
+  socials: SocialArray;
   languages: LanguageArray;
   email: string;
   phone: string;

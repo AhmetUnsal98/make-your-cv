@@ -21,7 +21,12 @@ const BuildPage = () => {
   const languages = useSelector(
     (state: any) => state.resume.initialLanguagesState.languages
   );
-
+  const socials = useSelector(
+    (state: any) => state.resume.initialSocialitiesState.socials
+  );
+  const experiences = useSelector(
+    (state: any) => state.resume.initialExperiencesState.experiences
+  );
   const [page, setPage] = useState(1);
   const [resumeData, setResumeData] = useState<ResumeModel>({
     id: uid(),
@@ -36,7 +41,8 @@ const BuildPage = () => {
     languages: languages,
     email: "",
     phone: "",
-    experiences: [],
+    socials: socials,
+    experiences: experiences,
   });
 
   const PageDisplay = () => {
@@ -70,7 +76,7 @@ const BuildPage = () => {
   };
   useEffect(() => {
     setResumeData({ ...resumeData, skills: skills });
-  }, [skills]);
+  }, [skills, languages, socials, experiences]);
 
   return (
     <BuilderLayout>
