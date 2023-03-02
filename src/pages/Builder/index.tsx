@@ -28,6 +28,9 @@ const BuildPage = () => {
     (state: any) => state.resume.initialExperiencesState.experiences
   );
   const [page, setPage] = useState(1);
+  console.log(
+    "Languages" + languages + "Socials" + socials + "experiences" + experiences
+  );
   const [resumeData, setResumeData] = useState<ResumeModel>({
     id: uid(),
     fullName: "",
@@ -75,7 +78,13 @@ const BuildPage = () => {
     }
   };
   useEffect(() => {
-    setResumeData({ ...resumeData, skills: skills });
+    setResumeData({
+      ...resumeData,
+      skills: skills,
+      languages: languages,
+      socials: socials,
+      experiences: experiences,
+    });
   }, [skills, languages, socials, experiences]);
 
   return (

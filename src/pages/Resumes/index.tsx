@@ -5,6 +5,7 @@ import { uid } from "uid";
 import { ResumeModel } from "../../lib/ResumeModel";
 import "./resume.scss";
 import ClipLoader from "react-spinners/ClipLoader";
+
 const override: CSSProperties = {
   display: "block",
   margin: "0 auto",
@@ -14,9 +15,10 @@ const override: CSSProperties = {
   top: "50%",
 };
 export const Resumes = () => {
-  const resume = useSelector((state: any) => state.resume.initialResumeState);
+  const resumes = useSelector((state: any) => state.resume.initialResumeState);
   const location = useLocation();
   const id = location.pathname.split("/")[2];
+
   const skills = useSelector(
     (state: any) => state.resume.initialSkillsState.skills
   );
@@ -29,6 +31,7 @@ export const Resumes = () => {
   const experiences = useSelector(
     (state: any) => state.resume.initialExperiencesState.experiences
   );
+
   const [currentResume, setCurrentResume] = useState<ResumeModel>({
     id: uid(),
     fullName: "",
@@ -46,9 +49,10 @@ export const Resumes = () => {
     experiences: experiences,
   });
   useEffect(() => {
-    for (var i = 0; i < resume.length; i++) {
-      if (resume[i].id === id) {
-        setCurrentResume(resume[i]);
+    //Finding resume
+    for (var i = 0; i < resumes.length; i++) {
+      if (resumes[i].id === id) {
+        setCurrentResume(resumes[i]);
       }
     }
   }, []);
@@ -75,22 +79,19 @@ export const Resumes = () => {
                     alignItems: "center",
                   }}
                 >
-                  <h2>Ahmet Ünsal</h2>
-                  <p>{"(Junior FrontEnd Developer)"}</p>
+                  <h2>{currentResume.fullName}</h2>
+                  <p>{"( " + currentResume.title + " )"}</p>
                 </div>
                 <div style={{ display: "flex", flexDirection: "column" }}>
                   <p className="comm">
-                    <b>İletişim:</b> 0507 783 81 92 / unsalahmet1998@outlook.com
+                    <b>İletişim : </b> {currentResume.phone} /
+                    {currentResume.email}
                   </p>
-                  <p className="comm">
-                    <b>Linkedin:</b> 0507 783 81 92 / unsalahmet1998@outlook.com
-                  </p>
-                  <p className="comm">
-                    <b>Medium:</b> 0507 783 81 92 / unsalahmet1998@outlook.com
-                  </p>
-                  <p className="comm">
-                    <b>Github:</b> 0507 783 81 92 / unsalahmet1998@outlook.com
-                  </p>
+                  {currentResume.socials.map((item: any) => (
+                    <p className="comm">
+                      <b>{item.socialName} : </b> {item.link}
+                    </p>
+                  ))}
                 </div>
               </div>
               <div className="right-wrapper-header">
@@ -113,8 +114,8 @@ export const Resumes = () => {
                 </p>
               </div>
               <div className="right-wrapper">
-                <p>Ahmet Ünsal</p>
-                <p>19.07.1998</p>
+                <p>{currentResume.fullName}</p>
+                <p>{currentResume.birthDate}</p>
                 <p>Ankara</p>
               </div>
             </div>
@@ -134,67 +135,73 @@ export const Resumes = () => {
                 </p>
               </div>
               <div className="right-wrapper">
-                <p>{resume.schoolName}</p>
-                <p>Bilgisayar Mühendisliği</p>
-                <p>2017 - 2022</p>
+                <p>{currentResume.schoolName}</p>
+                <p>{currentResume.degree}</p>
+                <p>
+                  {currentResume.eduStartDate} - {currentResume.eduFinishDate}
+                </p>
               </div>
             </div>
             <div className="section-name">
               <h2>İş Deneyimlerim</h2>
             </div>
-            <div className="resume-row">
-              <div className="left-wrapper">
-                <p>
-                  <b>Firma Adı :</b>
-                </p>
-                <p>
-                  <b>Çalışılan Bölüm :</b>
-                </p>
-                <p>
-                  <b>Başlangıç Bitiş Yılı :</b>
-                </p>
-                <p>
-                  <b>Açıklama :</b>
-                </p>
+            {currentResume.experiences.map((item: any) => (
+              <div className="resume-row">
+                <div className="left-wrapper">
+                  <p>
+                    <b>Firma Adı :</b>
+                  </p>
+                  <p>
+                    <b>Çalışılan Bölüm :</b>
+                  </p>
+                  <p>
+                    <b>Başlangıç Bitiş Yılı :</b>
+                  </p>
+                  <p>
+                    <b>Açıklama :</b>
+                  </p>
+                </div>
+                <div className="right-wrapper">
+                  <p>{item.companyName}</p>
+                  <p>{item.jobTitle}</p>
+                  <p>
+                    {item.expStartingDate} - {item.expFinishingDate}
+                  </p>
+                  <p>{item.desc}</p>
+                </div>
               </div>
-              <div className="right-wrapper">
-                <p>Esetron Mekatronik</p>
-                <p>Yazılım Geliştirme</p>
-                <p>2017 - 2022</p>
-                <p>
-                  Sint in modi quasi voluptatem temporibus ab laudantium dicta,
-                  iste even
-                </p>
-              </div>
-            </div>
+            ))}
+
             <div className="section-name">
-              <h2>Yetenkelerim ve Dillerim</h2>
+              <h2>Yetenkelerim</h2>
             </div>
-            <div className="resume-row">
-              <div className="left-wrapper">
-                <p>
-                  <b>JavaScript :</b>
-                </p>
-                <p>
-                  <b>HTML :</b>
-                </p>
-                <p>
-                  <b>English :</b>
-                </p>
-                <p>
-                  <b>Genel Açıklama :</b>
-                </p>
+            {currentResume.skills?.map((item: any) => (
+              <div className="resume-row">
+                <div className="left-wrapper">
+                  <p>
+                    <b>{item.skillName}</b>
+                  </p>
+                </div>
+                <div className="right-wrapper">
+                  <p>{item.skillLevel}</p>
+                </div>
               </div>
-              <div className="right-wrapper">
-                <p>Beginner</p>
-                <p>Expert</p>
-                <p>B1</p>
-                <p>
-                  Sint in modi quasi voluptatem temporibus ab laudantium dicta,
-                  iste even
-                </p>
-              </div>
+            ))}
+            <div className="section-name">
+              <h2>Dillerim</h2>
             </div>
+            {languages.map((item: any) => (
+              <div className="resume-row">
+                <div className="left-wrapper">
+                  <p>
+                    <b>{item.languageName}</b>
+                  </p>
+                </div>
+                <div className="right-wrapper">
+                  <p>{item.languageLevel}</p>
+                </div>
+              </div>
+            ))}
           </div>
         </div>
       )}
