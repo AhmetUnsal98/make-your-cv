@@ -5,7 +5,7 @@ import { LanguageArray } from "../lib/LanguageModel";
 import { Resumes } from "../lib/ResumeModel";
 import { SocialArray } from "../lib/SocialModel";
 const initialSkillsState: SkillArray = {
-  skills: [{ id: "ss", skillName: "ss", skillLevel: "ss" }],
+  skills: [],
 };
 const initialLanguagesState: LanguageArray = {
   languages: [],
