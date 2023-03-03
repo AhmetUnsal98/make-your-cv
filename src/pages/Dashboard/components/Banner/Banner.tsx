@@ -1,6 +1,7 @@
 import React from "react";
 import img from "../../../../assets/dash.png";
 import "./banner.scss";
+import { motion } from "framer-motion";
 
 interface BannerProps {
   direction: string;
@@ -8,7 +9,11 @@ interface BannerProps {
 
 const Banner: React.FC<BannerProps> = ({ direction }) => {
   return (
-    <div
+    <motion.div
+      initial={direction === "right" ? { x: 600 } : { x: -600 }}
+      whileInView={{ x: 0 }}
+      transition={{ duration: 1 }}
+      viewport={{ once: true }}
       className="banner"
       style={{ flexDirection: direction === "right" ? "row" : "row-reverse" }}
     >
@@ -24,7 +29,7 @@ const Banner: React.FC<BannerProps> = ({ direction }) => {
       <div className="banner-img">
         <img src={img}></img>
       </div>
-    </div>
+    </motion.div>
   );
 };
 

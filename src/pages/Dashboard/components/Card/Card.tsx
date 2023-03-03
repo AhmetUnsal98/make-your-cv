@@ -1,9 +1,16 @@
 import React from "react";
 import "./card.scss";
 import img from "../../../../assets/dash.png";
+import { motion } from "framer-motion";
 const Card = () => {
   return (
-    <div className="card">
+    <motion.div
+      initial={{ opacity: 0 }}
+      whileInView={{ opacity: 1 }}
+      transition={{ duration: 1 }}
+      viewport={{ once: true }}
+      className="card"
+    >
       <div className="card-img-container">
         <img src={img}></img>
       </div>
@@ -14,7 +21,7 @@ const Card = () => {
           minus.
         </p>
       </div>
-    </div>
+    </motion.div>
   );
 };
 
