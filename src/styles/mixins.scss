@@ -16,3 +16,14 @@
     color: $base-color-purple;
     font-weight: 550;
 }
+
+@mixin tablet {
+    @media (max-width: 768px) {
+        @content;
+    }
+}
+@mixin mobile {
+    @media (max-width: 480px) {
+        @content;
+    }
+}

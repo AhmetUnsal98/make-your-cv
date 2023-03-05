@@ -1,3 +1,4 @@
+@import "../../styles/mixins.scss";
 .footer {
     display: flex;
     flex-direction: column;
@@ -9,11 +10,18 @@
     span {
         color: white;
         cursor: pointer;
+        @include mobile {
+            text-align: center;
+        }
     }
     .upper-footer {
         display: flex;
         flex-direction: row;
         justify-content: space-around;
+        @include mobile {
+            flex-direction: column;
+            align-items: center;
+        }
     }
     .bottom-footer {
         display: flex;
@@ -23,6 +31,11 @@
         background-color: #5d3891;
         border-top: 2px solid white;
         text-align: center;
+        @include mobile {
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+        }
     }
 }
 .social-container {

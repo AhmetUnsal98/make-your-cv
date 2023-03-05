@@ -1,3 +1,5 @@
+@import "../../styles/mixins.scss";
+
 .dashboard {
     display: flex;
     flex-direction: column;
@@ -11,6 +13,10 @@
     background-color: white;
     align-items: center;
     justify-content: center;
+    @include mobile {
+        flex-direction: column;
+        height: 32vh;
+    }
 }
 .info-container {
     flex: 1;
@@ -19,11 +25,17 @@
     align-items: center;
     h1 {
         color: #5d3891;
+        @include mobile {
+            font-size: 1.7rem;
+            text-align: center;
+        }
+        @include mobile {
+            justify-content: center;
+        }
     }
     .buttons {
         display: flex;
         flex-direction: row;
-
         .button-link {
             width: auto;
             padding: 1.2rem;
@@ -40,8 +52,16 @@
                 border: 1px solid #5d3891;
                 transition: all 0.5s ease-in;
             }
+            @include mobile {
+                padding: 0.8rem;
+                font-size: 1.2rem;
+            }
         }
         button:last-child {
+            @include mobile {
+                padding: 0.5rem;
+                font-size: 1.2rem;
+            }
             width: auto;
             padding: 1.2rem;
             font-size: 1.5rem;
@@ -54,7 +74,6 @@
             &:hover {
                 background-color: #5d3891;
                 color: white;
-
                 transition: all 0.5s ease-in-out;
             }
         }
@@ -67,6 +86,9 @@
         height: 70%;
         object-fit: contain;
     }
+    @include mobile {
+        display: none;
+    }
 }
 .second-section {
     display: flex;
@@ -76,6 +98,10 @@
     align-items: center;
     justify-content: space-around;
     background-color: #e8e2e2;
+    @include mobile {
+        height: auto;
+        flex-direction: column;
+    }
 }
 .third-section {
     display: flex;
