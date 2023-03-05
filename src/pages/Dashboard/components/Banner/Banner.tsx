@@ -10,7 +10,7 @@ interface BannerProps {
 const Banner: React.FC<BannerProps> = ({ direction }) => {
   return (
     <motion.div
-      initial={direction === "right" ? { x: 600 } : { x: -600 }}
+      initial={direction === "right" ? { x: 200 } : { x: -200 }}
       whileInView={{ x: 0 }}
       transition={{ duration: 1 }}
       viewport={{ once: true }}
