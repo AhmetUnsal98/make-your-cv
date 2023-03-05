@@ -14,8 +14,8 @@
     align-items: center;
     justify-content: center;
     @include mobile {
-        flex-direction: column;
-        height: 32vh;
+        flex-direction: column-reverse;
+        height: auto;
     }
 }
 .info-container {
@@ -28,9 +28,6 @@
         @include mobile {
             font-size: 1.7rem;
             text-align: center;
-        }
-        @include mobile {
-            justify-content: center;
         }
     }
     .buttons {
@@ -53,13 +50,13 @@
                 transition: all 0.5s ease-in;
             }
             @include mobile {
-                padding: 0.8rem;
+                padding: 0.9rem;
                 font-size: 1.2rem;
             }
         }
         button:last-child {
             @include mobile {
-                padding: 0.5rem;
+                padding: 0.8rem;
                 font-size: 1.2rem;
             }
             width: auto;
@@ -82,12 +79,14 @@
 .image-container {
     flex: 1;
     img {
-        width: 70%;
-        height: 70%;
+        width: 60%;
+        height: 60%;
         object-fit: contain;
     }
     @include mobile {
-        display: none;
+        display: flex;
+        align-items: center;
+        justify-content: center;
     }
 }
 .second-section {
