@@ -7,23 +7,22 @@ import {
   addToExperiences,
   removeFromExperiences,
 } from "../../../redux/resumeSlice";
+import { useInputs } from "../../../hooks/useInputs";
 const IExperienceForm = ({ resumeData, setResumeData }: any) => {
-  const [companyName, setCompanyName] = useState("");
-  const [jobTitle, setJobTitle] = useState("");
-  const [startingDate, setStartingDate] = useState("");
-  const [finishingDate, setFinishingDate] = useState("");
-  const [desc, setDesc] = useState("");
+  const [inputs, setInputs] = useInputs({
+    companyName: "",
+    jobTitle: "",
+    startingDate: "",
+    finishingDate: "",
+    desc: "",
+  });
 
   const dispatch = useDispatch();
   const experiences = useSelector(
     (state: any) => state.resume.initialExperiencesState.experiences
   );
   function clearInputs() {
-    setCompanyName("");
-    setJobTitle("");
-    setStartingDate("");
-    setFinishingDate("");
-    setDesc("");
+    setInputs({});
   }
   return (
     <div className="education">
@@ -34,10 +33,8 @@ const IExperienceForm = ({ resumeData, setResumeData }: any) => {
             type="text"
             name="companyName"
             placeholder=""
-            value={companyName}
-            onChange={(e) => {
-              setCompanyName(e.target.value);
-            }}
+            value={inputs.companyName}
+            onChange={setInputs}
           ></input>
         </div>
         <div className="education-column">
@@ -46,10 +43,8 @@ const IExperienceForm = ({ resumeData, setResumeData }: any) => {
             type="text"
             name="jobTitle"
             placeholder=""
-            value={jobTitle}
-            onChange={(e) => {
-              setJobTitle(e.target.value);
-            }}
+            value={inputs.jobTitle}
+            onChange={setInputs}
           ></input>
         </div>
       </div>
@@ -62,10 +57,8 @@ const IExperienceForm = ({ resumeData, setResumeData }: any) => {
               type="date"
               name="startingDate"
               placeholder=""
-              value={startingDate}
-              onChange={(e) => {
-                setStartingDate(e.target.value);
-              }}
+              value={inputs.startingDate}
+              onChange={setInputs}
             ></input>
           </div>
         </div>
@@ -77,10 +70,8 @@ const IExperienceForm = ({ resumeData, setResumeData }: any) => {
               type="date"
               name="finishingDate"
               placeholder=""
-              value={finishingDate}
-              onChange={(e) => {
-                setFinishingDate(e.target.value);
-              }}
+              value={inputs.finishingDate}
+              onChange={setInputs}
             ></input>
           </div>
         </div>
@@ -92,21 +83,15 @@ const IExperienceForm = ({ resumeData, setResumeData }: any) => {
           className="desc"
           name="desc"
           placeholder=""
-          value={desc}
-          onChange={(e) => {
-            setDesc(e.target.value);
-          }}
+          value={inputs.desc}
+          onChange={setInputs}
         ></input>
         <button
           onClick={() => {
             dispatch(
               addToExperiences({
                 id: uid(),
-                companyName: companyName,
-                jobTitle: jobTitle,
-                expStartingDate: startingDate,
-                expFinishDate: finishingDate,
-                desc: desc,
+                inputs,
               })
             );
             clearInputs();
@@ -116,8 +101,8 @@ const IExperienceForm = ({ resumeData, setResumeData }: any) => {
         </button>
         {experiences?.map((item: any) => (
           <div className="exp-set">
-            <p>Company Name : {item.companyName}</p>
-            <p> Title : {item.jobTitle}</p>
+            <p>Company Name : {item.inputs.companyName}</p>
+            <p> Title : {item.inputs.jobTitle}</p>
             <IoTrashBinOutline
               onClick={() => {
                 dispatch(removeFromExperiences(item.id));

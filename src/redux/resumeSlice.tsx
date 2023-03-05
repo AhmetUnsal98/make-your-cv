@@ -17,12 +17,7 @@ const initialSocialitiesState: SocialArray = {
   socials: [],
 };
 const initialResumeState: Resumes[] = [];
-const initialStateRedux = {
-  initialSkillsState,
-  initialLanguagesState,
-  initialExperiencesState,
-  initialSocialitiesState,
-};
+
 const resumeSlice = createSlice({
   name: "resume",
   initialState: {
@@ -60,8 +55,9 @@ const resumeSlice = createSlice({
     },
     removeFromExperiences: (state, action) => {
       const newExperiences = state.initialExperiencesState.experiences.filter(
-        (item) => item.id === action.payload
+        (item) => item.id !== action.payload
       );
+      state.initialExperiencesState.experiences = newExperiences;
     },
     addToSocialities: (state, action) => {
       state.initialSocialitiesState.socials.push(action.payload);

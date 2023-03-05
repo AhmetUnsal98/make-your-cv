@@ -162,10 +162,11 @@ export const Resumes = () => {
                   </p>
                 </div>
                 <div className="right-wrapper">
-                  <p>{item.companyName}</p>
-                  <p>{item.jobTitle}</p>
+                  <p>{item.inputs.companyName}</p>
+                  <p>{item.inputs.jobTitle}</p>
                   <p>
-                    {item.expStartingDate} - {item.expFinishingDate}
+                    {item.inputs.expStartingDate} -{" "}
+                    {item.inputs.expFinishingDate}
                   </p>
                   <p>{item.desc}</p>
                 </div>
