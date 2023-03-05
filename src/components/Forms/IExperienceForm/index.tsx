@@ -31,10 +31,10 @@ const IExperienceForm = () => {
       whileInView={{ opacity: 1 }}
       transition={{ duration: 1 }}
       viewport={{ once: true }}
-      className="education"
+      className="experience"
     >
-      <div className="education-upper">
-        <div className="education-column">
+      <div className="experience-upper">
+        <div className="experience-column">
           <span>Company Name</span>
           <input
             type="text"
@@ -44,7 +44,7 @@ const IExperienceForm = () => {
             onChange={setInputs}
           ></input>
         </div>
-        <div className="education-column">
+        <div className="experience-column">
           <span>Job Title</span>
           <input
             type="text"
@@ -56,10 +56,10 @@ const IExperienceForm = () => {
         </div>
       </div>
 
-      <div className="education-upper">
-        <div className="education-column">
+      <div className="experience-upper">
+        <div className="experience-column">
           <span>Starting Date</span>
-          <div className="education-bottom">
+          <div className="experience-bottom">
             <input
               type="date"
               name="startingDate"
@@ -70,9 +70,9 @@ const IExperienceForm = () => {
           </div>
         </div>
 
-        <div className="education-column">
+        <div className="experience-column">
           <span>Finish Date</span>
-          <div className="education-bottom">
+          <div className="experience-bottom">
             <input
               type="date"
               name="finishingDate"

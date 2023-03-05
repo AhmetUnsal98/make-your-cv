@@ -13,23 +13,27 @@ const IEducationForm = ({ resumeData, setResumeData }: any) => {
       <div className="education-upper">
         <div className="education-column">
           <span>School Name</span>
-          <input
-            type="text"
-            value={resumeData.schoolName}
-            onChange={(e) => {
-              setResumeData({ ...resumeData, schoolName: e.target.value });
-            }}
-          ></input>
+          <div className="education-bottom">
+            <input
+              type="text"
+              value={resumeData.schoolName}
+              onChange={(e) => {
+                setResumeData({ ...resumeData, schoolName: e.target.value });
+              }}
+            ></input>
+          </div>
         </div>
         <div className="education-column">
           <span>Degree</span>
-          <input
-            type="text"
-            value={resumeData.degree}
-            onChange={(e) => {
-              setResumeData({ ...resumeData, degree: e.target.value });
-            }}
-          ></input>
+          <div className="education-bottom">
+            <input
+              type="text"
+              value={resumeData.degree}
+              onChange={(e) => {
+                setResumeData({ ...resumeData, degree: e.target.value });
+              }}
+            ></input>
+          </div>
         </div>
       </div>
 

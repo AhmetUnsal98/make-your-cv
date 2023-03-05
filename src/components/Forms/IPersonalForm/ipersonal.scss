@@ -11,47 +11,46 @@
 
     @include mobile {
         margin: 0;
+        flex-direction: column;
+    }
 
-        flex-direction: column;
-        align-items: center;
-    }
-    .left-personal {
-        width: 50%;
-        height: auto;
-        display: flex;
-        justify-content: center;
-        flex-direction: column;
-        @include mobile {
-            width: 100%;
-            margin-top: 1rem;
-            margin-bottom: 1rem;
-        }
-    }
-    .right-personal {
-        @extend .left-personal;
-        align-items: center;
-        .person-container {
-            width: 6rem;
-            height: 6rem;
-            background-color: $base-color-purple;
-            border-radius: 6rem;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            cursor: pointer;
-        }
-        input {
-            width: 25%;
-            border: 0px;
-            @include mobile {
-                width: 0%;
-            }
-        }
-    }
     input {
         @include inputForm;
     }
     span {
         @include spanForm;
+    }
+}
+.left-personal {
+    width: 50%;
+    height: auto;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    @include mobile {
+        width: 100%;
+    }
+}
+.right-personal {
+    @extend .left-personal;
+    align-items: center;
+    .person-container {
+        width: 6rem;
+        height: 6rem;
+        background-color: $base-color-purple;
+        border-radius: 6rem;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        cursor: pointer;
+    }
+    @include mobile {
+        width: 100%;
+        align-items: center;
+        margin-top: 1rem;
+    }
+    input {
+        width: 25%;
+        border: 0px;
     }
 }
