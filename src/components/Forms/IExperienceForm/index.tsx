@@ -59,28 +59,26 @@ const IExperienceForm = () => {
       <div className="experience-upper">
         <div className="experience-column">
           <span>Starting Date</span>
-          <div className="experience-bottom">
-            <input
-              type="date"
-              name="startingDate"
-              placeholder=""
-              value={inputs.startingDate}
-              onChange={setInputs}
-            ></input>
-          </div>
+
+          <input
+            type="date"
+            name="startingDate"
+            placeholder=""
+            value={inputs.startingDate}
+            onChange={setInputs}
+          ></input>
         </div>
 
         <div className="experience-column">
           <span>Finish Date</span>
-          <div className="experience-bottom">
-            <input
-              type="date"
-              name="finishingDate"
-              placeholder=""
-              value={inputs.finishingDate}
-              onChange={setInputs}
-            ></input>
-          </div>
+
+          <input
+            type="date"
+            name="finishingDate"
+            placeholder=""
+            value={inputs.finishingDate}
+            onChange={setInputs}
+          ></input>
         </div>
       </div>
       <div className="description">

@@ -8,6 +8,9 @@
     flex-direction: row;
     margin-top: 1rem;
     justify-content: center;
+    @include mobile {
+        flex-direction: column;
+    }
 }
 .skill-half {
     width: 45%;
@@ -22,6 +25,12 @@
     span {
         @include spanForm;
     }
+    @include mobile {
+        flex-direction: column;
+        margin: 0.1rem;
+        margin-top: 1rem;
+        width: 100%;
+    }
 }
 .skill-row {
     display: flex;
@@ -33,6 +42,10 @@
     }
     input {
         margin: 0.2rem;
+    }
+    @include mobile {
+        flex-direction: column;
+        align-items: center;
     }
 }
 button {
@@ -48,7 +61,7 @@ button {
     display: flex;
     flex-direction: row;
     width: 70%;
-    border: 1px solid $base-color-purple;
+    border: 2px solid $base-color-purple;
     padding: 0.5rem;
     border-radius: 6px;
     .skill-set-name {
@@ -61,6 +74,14 @@ button {
             color: gray;
             font-size: 1rem;
             font-weight: 550;
+            @include mobile {
+                font-size: 0.8rem;
+            }
         }
+    }
+    @include mobile {
+        width: 90%;
+        padding: 0.1rem;
+        align-items: center;
     }
 }
