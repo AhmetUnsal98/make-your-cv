@@ -6,7 +6,13 @@
     align-items: center;
     justify-content: center;
     width: 100vw;
-    height: 100vh;
+    height: 90vh;
+
+    h1 {
+        @include mobile {
+            font-size: 1.5rem;
+        }
+    }
 }
 .progress-bar {
     width: 70vw;
@@ -54,6 +60,9 @@
         &:active {
             animation: ripple 1s ease-in;
         }
+        @include mobile {
+            margin: 0;
+        }
     }
     @keyframes ripple {
         0% {
@@ -74,6 +83,9 @@
         border-radius: 4px;
         font-weight: 550;
         cursor: pointer;
+        @include mobile {
+            margin: 0;
+        }
     }
     .prev-button:disabled {
         background-color: lightgray;
@@ -102,9 +114,15 @@
         color: gray;
         border-bottom: 2px solid $base-color-lightgray;
         cursor: pointer;
+        @include mobile {
+            display: none;
+        }
     }
     .tag.active {
         border-bottom: 2px solid $base-color-purple;
         color: $base-color-purple;
+        @include mobile {
+            display: flex;
+        }
     }
 }
