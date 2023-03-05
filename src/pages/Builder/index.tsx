@@ -58,9 +58,7 @@ const BuildPage = () => {
         <IEducationForm resumeData={resumeData} setResumeData={setResumeData} />
       );
     } else if (page === 3) {
-      return (
-        <ISkillForm resumeData={resumeData} setResumeData={setResumeData} />
-      );
+      return <ISkillForm />;
     } else if (page === 4) {
       return (
         <ICommuncationForm
@@ -69,12 +67,7 @@ const BuildPage = () => {
         />
       );
     } else if (page === 5) {
-      return (
-        <IExperienceForm
-          resumeData={resumeData}
-          setResumeData={setResumeData}
-        />
-      );
+      return <IExperienceForm />;
     }
   };
   useEffect(() => {

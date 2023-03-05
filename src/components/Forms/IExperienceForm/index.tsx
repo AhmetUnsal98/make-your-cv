@@ -8,7 +8,8 @@ import {
   removeFromExperiences,
 } from "../../../redux/resumeSlice";
 import { useInputs } from "../../../hooks/useInputs";
-const IExperienceForm = ({ resumeData, setResumeData }: any) => {
+import { motion } from "framer-motion";
+const IExperienceForm = () => {
   const [inputs, setInputs] = useInputs({
     companyName: "",
     jobTitle: "",
@@ -25,7 +26,13 @@ const IExperienceForm = ({ resumeData, setResumeData }: any) => {
     setInputs({});
   }
   return (
-    <div className="education">
+    <motion.div
+      initial={{ opacity: 0 }}
+      whileInView={{ opacity: 1 }}
+      transition={{ duration: 1 }}
+      viewport={{ once: true }}
+      className="education"
+    >
       <div className="education-upper">
         <div className="education-column">
           <span>Company Name</span>
@@ -113,7 +120,7 @@ const IExperienceForm = ({ resumeData, setResumeData }: any) => {
           </div>
         ))}
       </div>
-    </div>
+    </motion.div>
   );
 };
 

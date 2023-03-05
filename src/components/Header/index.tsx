@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import "./header.scss";
-
+import { motion } from "framer-motion";
 const Header = () => {
   const [fix, setFix] = useState(false);
 
@@ -13,7 +13,12 @@ const Header = () => {
   }
   window.addEventListener("scroll", setFixed);
   return (
-    <div className={fix ? "header fixed" : "header"}>
+    <motion.div
+      initial={{ y: -500 }}
+      animate={{ y: 0 }}
+      transition={{ duration: 1 }}
+      className={fix ? "header fixed" : "header"}
+    >
       <div className="logo-container">
         <p>LOGO.</p>
       </div>
@@ -21,7 +26,7 @@ const Header = () => {
         <a href="#">Sign In</a>
         <a href="#">Sign Up</a>
       </div>
-    </div>
+    </motion.div>
   );
 };
 

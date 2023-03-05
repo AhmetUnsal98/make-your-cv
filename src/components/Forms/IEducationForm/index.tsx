@@ -1,8 +1,15 @@
 import React from "react";
 import "./ieducation.scss";
+import { motion } from "framer-motion";
 const IEducationForm = ({ resumeData, setResumeData }: any) => {
   return (
-    <div className="education">
+    <motion.div
+      initial={{ opacity: 0 }}
+      whileInView={{ opacity: 1 }}
+      transition={{ duration: 1 }}
+      viewport={{ once: true }}
+      className="education"
+    >
       <div className="education-upper">
         <div className="education-column">
           <span>School Name</span>
@@ -54,7 +61,7 @@ const IEducationForm = ({ resumeData, setResumeData }: any) => {
           </div>
         </div>
       </div>
-    </div>
+    </motion.div>
   );
 };
 

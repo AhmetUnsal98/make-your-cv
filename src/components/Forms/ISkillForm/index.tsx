@@ -9,13 +9,15 @@ import {
   removeFromLanguages,
   removeFromSkills,
 } from "../../../redux/resumeSlice";
-const ISkillForm = ({ resumeData, setResumeData }: any) => {
-  const [skillName, setSkillName] = useState("");
-  const [skillLevel, setSkillLevel] = useState("");
-
-  const [languageName, setLanguageName] = useState("");
-  const [languageLevel, setLanguageLevel] = useState("");
-
+import { useInputs } from "../../../hooks/useInputs";
+import { motion } from "framer-motion";
+const ISkillForm = () => {
+  const [inputs, setInputs] = useInputs({
+    skillName: "",
+    skillLevel: "",
+    languageName: "",
+    languageLevel: "",
+  });
   const dispatch = useDispatch();
   const skills = useSelector(
     (state: any) => state.resume.initialSkillsState.skills
@@ -25,34 +27,40 @@ const ISkillForm = ({ resumeData, setResumeData }: any) => {
   );
 
   return (
-    <div className="skill">
+    <motion.div
+      initial={{ opacity: 0 }}
+      whileInView={{ opacity: 1 }}
+      transition={{ duration: 1 }}
+      viewport={{ once: true }}
+      className="skill"
+    >
       <div className="skill-half">
         <span>Add Your Skill</span>
 
         <div className="skill-row">
           <input
             type="text"
-            name="skill"
+            name="skillName"
             placeholder="Skill Name"
-            value={skillName}
-            onChange={(e) => {
-              setSkillName(e.target.value);
-            }}
+            value={inputs.skillName}
+            onChange={setInputs}
           ></input>
           <input
             type="text"
             name="skillLevel"
             placeholder="Level"
-            value={skillLevel}
-            onChange={(e) => {
-              setSkillLevel(e.target.value);
-            }}
+            value={inputs.skillLevel}
+            onChange={setInputs}
           ></input>
           <button
             onClick={() => {
-              setSkillName("");
-              setSkillLevel("");
-              dispatch(addToSkills({ id: uid(), skillName, skillLevel }));
+              dispatch(
+                addToSkills({
+                  id: uid(),
+                  skillName: inputs.skillName,
+                  skillLevel: inputs.skillLevel,
+                })
+              );
             }}
           >
             <IoAddCircleOutline className="trash" size={40} />
@@ -86,32 +94,26 @@ const ISkillForm = ({ resumeData, setResumeData }: any) => {
         <div className="skill-row">
           <input
             type="text"
-            name="language"
+            name="languageName"
             placeholder="Language"
-            value={languageName}
-            onChange={(e) => {
-              setLanguageName(e.target.value);
-            }}
+            value={inputs.languageName}
+            onChange={setInputs}
           ></input>
           <input
             type="text"
             name="languageLevel"
             placeholder="Level"
-            value={languageLevel}
-            onChange={(e) => {
-              setLanguageLevel(e.target.value);
-            }}
+            value={inputs.languageLevel}
+            onChange={setInputs}
           ></input>
           <button
             type="submit"
             onClick={() => {
-              setLanguageName("");
-              setLanguageLevel("");
               dispatch(
                 addToLangugages({
                   id: uid(),
-                  languageName: languageName,
-                  languageLevel: languageLevel,
+                  languageName: inputs.languageName,
+                  languageLevel: inputs.languageLevel,
                 })
               );
             }}
@@ -140,7 +142,7 @@ const ISkillForm = ({ resumeData, setResumeData }: any) => {
           </div>
         ))}
       </div>
-    </div>
+    </motion.div>
   );
 };
 

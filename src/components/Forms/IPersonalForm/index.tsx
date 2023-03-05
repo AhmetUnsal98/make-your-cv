@@ -1,11 +1,17 @@
 import React from "react";
 import "./ipersonal.scss";
 import { IoPersonAddOutline } from "react-icons/io5";
-import { Formik } from "formik";
+import { motion } from "framer-motion";
 
 const IPersonalForm = ({ resumeData, setResumeData }: any) => {
   return (
-    <div className="ipersonal">
+    <motion.div
+      initial={{ opacity: 0 }}
+      whileInView={{ opacity: 1 }}
+      transition={{ duration: 1 }}
+      viewport={{ once: true }}
+      className="ipersonal"
+    >
       <div className="ipersonal">
         <div className="left-personal">
           <span>Your Name Surname</span>
@@ -40,7 +46,7 @@ const IPersonalForm = ({ resumeData, setResumeData }: any) => {
           <span>Fotoğrafını Yükle</span>
         </div>
       </div>
-    </div>
+    </motion.div>
   );
 };
 

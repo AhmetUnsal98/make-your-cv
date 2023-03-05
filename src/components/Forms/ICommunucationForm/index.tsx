@@ -7,10 +7,11 @@ import {
   addToSocialities,
   removeFromSocialities,
 } from "../../../redux/resumeSlice";
+import { useInputs } from "../../../hooks/useInputs";
+import { motion } from "framer-motion";
 
 const ICommuncationForm = ({ resumeData, setResumeData }: any) => {
-  const [socialName, setSocialName] = useState("");
-  const [link, setLink] = useState("");
+  const [inputs, setInputs] = useInputs({ socialName: "", link: "" });
 
   const dispatch = useDispatch();
   const socials = useSelector(
@@ -18,7 +19,13 @@ const ICommuncationForm = ({ resumeData, setResumeData }: any) => {
   );
 
   return (
-    <div className="communucation">
+    <motion.div
+      initial={{ opacity: 0 }}
+      whileInView={{ opacity: 1 }}
+      transition={{ duration: 1 }}
+      viewport={{ once: true }}
+      className="communucation"
+    >
       <div className="comm-wrapper">
         <div className="comm-column">
           <span>E-Mail</span>
@@ -46,28 +53,30 @@ const ICommuncationForm = ({ resumeData, setResumeData }: any) => {
           <span>Socail Media</span>
           <input
             type="text"
-            value={socialName}
-            onChange={(e) => {
-              setSocialName(e.target.value);
-            }}
+            name="socialName"
+            value={inputs.socialName}
+            onChange={setInputs}
           ></input>
         </div>
         <div className="comm-column">
           <span>Link</span>
           <input
             type="text"
-            value={link}
-            onChange={(e) => {
-              setLink(e.target.value);
-            }}
+            name="link"
+            value={inputs.link}
+            onChange={setInputs}
           ></input>
         </div>
         <div className="comm-column-button">
           <button
             onClick={() => {
-              dispatch(addToSocialities({ id: uid(), socialName, link }));
-              setSocialName("");
-              setLink("");
+              dispatch(
+                addToSocialities({
+                  id: uid(),
+                  socialName: inputs.socialName,
+                  link: inputs.link,
+                })
+              );
             }}
           >
             Add
@@ -88,7 +97,7 @@ const ICommuncationForm = ({ resumeData, setResumeData }: any) => {
           />
         </div>
       ))}
-    </div>
+    </motion.div>
   );
 };
 
